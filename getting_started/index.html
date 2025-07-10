@@ -649,6 +649,12 @@
 <h2 id="what-is-agentics">What is agentics?</h2>
 <p>Agentics is a lightweight, Python-native framework for building structured, agentic workflows over tabular or JSON-based data using Pydantic types and transduction logic. Designed to work seamlessly with large language models (LLMs), Agentics enables users to define input and output schemas as structured types and apply declarative, composable transformations—called transductions—across data collections. It supports asynchronous execution, built-in memory for structured retrieval-augmented generation (RAG), and self-transduction for tasks like data imputation and few-shot learning. With no-code and low-code interfaces, Agentics is ideal for rapidly prototyping intelligent systems that require structured reasoning, flexible memory access, and interpretable outputs.</p>
 <h2 id="installation">Installation</h2>
+<ul>
+<li>Clone the repository</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.ibm.com/nl2insights/agentics.git
+<span class="w">  </span><span class="nb">cd</span><span class="w"> </span>agentics
+</code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Poetry</label><label for="__tabbed_1_2">Python</label><label for="__tabbed_1_3">uv</label><label for="__tabbed_1_4">uvx 🏃🏽</label><label for="__tabbed_1_5">Conda</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -656,28 +662,39 @@
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sSL<span class="w"> </span>https://install.python-poetry.org<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-
 </code></pre></div>
 <p>Clone and install agentics</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.ibm.com/nl2insights/agentics.git
-<span class="nb">cd</span><span class="w"> </span>agentics
-poetry<span class="w"> </span>install
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>install
 poetry<span class="w"> </span>shell
 poetry<span class="w"> </span>add<span class="w"> </span>src/agentics/memory/memory-backend-client
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Ensure you have Python 3.11 🚨.</p>
+<blockquote>
+<p>Ensure you have Python 3.11+ 🚨.</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
 </code></pre></div>
+</blockquote>
+<ul>
+<li>
 <p>Create a virtual environment with Python's built in <code>venv</code> module. In linux, this 
-package may be required to be installed with the Operating System package manager.</p>
-<p><code>python -m venv .venv</code> </p>
-<p>Activate the virtual environment (not that if you use VSCode Python extension this
-can be done ):</p>
+package may be required to be installed with the Operating System package manager.
+    <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</code></pre></div></p>
+</li>
+<li>
+<p>Activate the virtual environment</p>
+</li>
+</ul>
 <h3 id="bashzsh">Bash/Zsh</h3>
 <p><code>source .venv/bin/activate</code></p>
 <h3 id="fish">Fish</h3>
 <p><code>source .venv/bin/activate.fish</code></p>
 <h3 id="vscode">VSCode</h3>
 <p>Press <code>F1</code> key and start typing <code>&gt; Select python</code> and select <code>Select Python Interpreter</code></p>
+<ul>
+<li>Install the package
+    <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>./agentics
+</code></pre></div></li>
+</ul>
 </div>
 <div class="tabbed-block">
 <ul>
@@ -686,8 +703,8 @@ can be done ):</p>
 <span class="c1"># It&#39;s recommended to restart the shell afterwards</span>
 <span class="nb">exec</span><span class="w"> </span><span class="nv">$SHELL</span>
 </code></pre></div></li>
-<li>uv venv --python 3.11 </li>
-<li>uv pip install </li>
+<li><code>uv venv --python 3.11</code></li>
+<li><code>uv pip install ./agentics</code> or <code>uv add ./agentics</code> (recommended)</li>
 </ul>
 </div>
 <div class="tabbed-block">
@@ -700,7 +717,7 @@ can be done ):</p>
 <span class="c1"># It&#39;s recommended to restart the shell afterwards</span>
 <span class="nb">exec</span><span class="w"> </span><span class="nv">$SHELL</span>
 </code></pre></div></li>
-<li>uvx --from </li>
+<li>uvx --verbose --from ./agentics ipython</li>
 </ul>
 </div>
 <div class="tabbed-block">
@@ -718,7 +735,7 @@ can be done ):</p>
 </code></pre></div></p>
 </li>
 <li>Install <code>agentics</code> from a folder or git reference
-    <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>
+    <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>./agentics
 </code></pre></div></li>
 </ol>
 </div>
