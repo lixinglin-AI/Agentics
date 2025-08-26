@@ -1,0 +1,40 @@
+name: Publish Python package to TestPyPI (Poetry + uvx + cache)
+
+on:
+  push:
+    branches:
+      - main
+      - "dev**"
+
+jobs:
+  build-and-publish:
+    permissions:
+      id-token: write
+      contents: read
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache uv dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: uv-cache-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            uv-cache-${{ runner.os }}-
+
+      - name: Install uv
+        run: curl -Ls https://astral.sh/uv/install.sh | bash
+
+      - name: Build package (Poetry with uvx)
+        run: uvx poetry build
+
+      - name: Publish package distributions to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
