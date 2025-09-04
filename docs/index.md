@@ -19,6 +19,6 @@ This documentation introduces the core concepts behind Agentics and provides eve
 
 🔁 [Transduction](transduction.md): Discover how the << operator enables logical transduction between types and how to customize its behavior.
 
-🧬  [Memory](memory.md): Use external knowledge from documents to augment transduction through the built-in memory system.
+<!-- 🧬  [Memory](memory.md): Use external knowledge from documents to augment transduction through the built-in memory system. -->
 
-🛠️ [Tools](tools.md): Integrate with external frameworks like LangChain or CrewAI to provide dynamic access to data sources during transduction.
+<!-- 🛠️ [Tools](tools.md): Integrate with external frameworks like LangChain or CrewAI to provide dynamic access to data sources during transduction. -->

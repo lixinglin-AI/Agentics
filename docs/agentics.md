@@ -119,7 +119,7 @@ print(movies[0]) ## note that movies[0] is equivalent to
 
 ## Reference code
 
-[explore this example](src/agentics/examples/agentics_basics.py)
+[explore this example](https://github.com/IBM/Agentics/blob/main/tutorials/agentics_basics.ipynb)
 
 
 ## See Next: Transduction

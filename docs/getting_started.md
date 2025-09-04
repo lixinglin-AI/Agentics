@@ -15,19 +15,34 @@ Agentics is a lightweight, Python-native framework for building structured, agen
 
 * Install uv (skip if available) 
 
-  ```bash
-  curl -LsSf https://astral.sh/uv/install.sh | sh
-  ```
+=== "Linux and OSX"
 
-  Other installation options [here](curl -LsSf https://astral.sh/uv/install.sh | sh)
+    ```bash
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    ```
+
+=== "OSX with `brew`"
+
+    ```bash
+    brew install uv
+    ```
+
+  Other installation options [here](https://docs.astral.sh/uv/getting-started/installation/)
 
 * Install the dependencies
 
   ```bash
   
   uv sync
-  # Source the environment (optional, you can skip this and prepend uv run to the later lines)
-  source .venv/bin/activate # bash/zsh 🐚
+  ```
+
+* Activate the environment
+
+  > If you use `uv run python` you don't need to follow this step
+
+  ```bash
+  
+  source .venv/bin/activate # bash/zsh 🐚 👨‍💻
   source .venv/bin/activate.fish # fish 🐟
   ```
 
@@ -44,13 +59,14 @@ Set Up LLM provider, Chose one of the following:
 - `OPENAI_API_KEY` - Your OpenAI APIKey
 - `OPENAI_MODEL_ID` - Your favorute model, default to **openai/gpt-4**
 
-#### Ollama (local)
+#### Ollama (local, may require GPU)
+
 - Download and install [Ollama](https://ollama.com/)
 - Download a Model. You should use a model that support reasoning and fit your GPU. So smaller are preferred. 
 ```
 ollama pull ollama/deepseek-r1:latest
 ```
-- "OLLAMA_MODEL_ID" - ollama/gpt-oss:latest (better quality), ollama/deepseek-r1:latest (smaller)
+- `OLLAMA_MODEL_ID` - ollama/gpt-oss:latest (better quality), ollama/deepseek-r1:latest (smaller)
 
 #### IBM WatsonX:
 
@@ -77,7 +93,7 @@ ollama pull ollama/deepseek-r1:latest
 test hello world example (need to set up llm credentials first)
 
 ```bash
-python src/agentics/examples/hello_world.py
+python examples/hello_world.py
 ```
 
 this will return something like 
@@ -103,8 +119,6 @@ confidence: 1.0
 
 ## Using MCP servers
 
-
-
 Point to your local MCP server code by setting 
 - MCP_SERVER_PATH = YOUR_MCP_SERVER.py 
 
@@ -112,12 +126,12 @@ The file [src/agentics/tools/DDG_search_tool_mcp.py](src/agentics/tools/DDG_sear
 
 To try it out, first start the MCP server
 ```bash
-poetry run python src/agentics/tools/DDG_search_tool_mcp.py  ## point to your local file system path if doens't work
-export MCP_SERVER_PATH=src/agentics/tools/DDG_search_tool_mcp.py ## point to your local file system path if doens't work
+poetry run python src/agentics/tools/DDG_search_tool_mcp.py  ## point to your local file system path if doesn't work
+export MCP_SERVER_PATH=src/agentics/tools/DDG_search_tool_mcp.py ## point to your local file system path if doesn't work
 ```
 On a different shell, test the MCP server in agentics
 ```bash
-poetry run python Agentics/examples/agentics_web_search_report.py ## point to your local file system path if doens't work
+poetry run python Agentics/examples/agentics_web_search_report.py ## point to your local file system path if doesn't work
 ```
 
 Ask your question and it will be answered by looking up in the web. 
@@ -159,13 +173,16 @@ asyncio.run(main())
 
 
 
+
 ## Documentation
 
 This documentation page is written using Mkdocs. 
 You can start the server to visualize this interactively.
+
 ```bash
-mkdocs serve
+uv run --group docs mkdocs serve
 ```
+
 After started, documentation will be available here [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ### Installation details
@@ -174,21 +191,23 @@ After started, documentation will be available here [http://127.0.0.1:8000/](htt
 
     Install poetry (skip if available)
 
+    > You will have to install Python 3.12+ 
+
     ```bash
     curl -sSL https://install.python-poetry.org | python3 -
     ```
 
-    Clone and install agentics
+    Clone and install 
 
     ```bash
     
-    poetry install
+    poetry add agentics
     source $(poetry env info --path)/bin/activate 
     ```
 
 === "Python"
 
-    > Ensure you have Python 3.11+ 🚨.
+    > Ensure you have Python 3.12+ 🚨.
     >
     > ```shell
     > python --version
@@ -220,18 +239,6 @@ After started, documentation will be available here [http://127.0.0.1:8000/](htt
         ```
     
 
-=== "uv"
-
-    * Ensure `uv` is installed.
-    ```bash
-    command -v uv >/dev/null &&  curl -LsSf https://astral.sh/uv/install.sh | sh
-    # It's recommended to restart the shell afterwards
-    exec $SHELL
-    ```
-    * `uv venv --python 3.11`
-    * `uv pip install ./agentics` or `uv add ./agentics` (recommended)
-  
-
 === "uvx 🏃🏽"
 
     > This is a way to run agentics temporarily or quick tests
@@ -249,7 +256,7 @@ After started, documentation will be available here [http://127.0.0.1:8000/](htt
 
     1. Create a conda environment:
        ```bash
-       conda create -n agentics python=3.11
+       conda create -n agentics python=3.12
        ```
        In this example the name of the environment is `agetnics` but you can change
        it to your personal preference.

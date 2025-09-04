@@ -16,7 +16,7 @@ nav:
   - Use Cases: use_cases.md
   - Agentics: agentics.md
   - Transduction: transduction.md
-  - Memory: memory.md
+
 
 
 markdown_extensions:
