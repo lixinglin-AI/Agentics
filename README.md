@@ -50,11 +50,14 @@ We welcome new AG entusiasts to extend this framework with new applications and 
 
 ## Tutorial 
 
+
+[LLMs](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/llms.ipynb) Learn how to connect LLM providers
+
 [Agentics Basics](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/agentics_basics.ipynb) Learn how to create AGs
 
-[Amap Reduce](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/amap_reduce.ipynb) Learn how to use asynchhronous map and reduce
-
 [Transduction](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/transduction.ipynb) Learn how to use logical transduction
+
+[Amap Reduce](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/amap_reduce.ipynb) Learn how to use asynchhronous map and reduce
 
 [ATypes](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/atypes.ipynb) 
 
