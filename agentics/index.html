@@ -425,28 +425,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../memory.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Memory
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -580,6 +558,7 @@ Agentics enable us to think about AI workflows in terms of structured data trans
     <span class="n">description</span><span class="p">:</span><span class="nb">str</span>
 
 <span class="n">movies</span> <span class="o">=</span> <span class="n">AG</span><span class="p">(</span><span class="n">atype</span><span class="o">=</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">movies</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Movie</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Superman&quot;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="importing-csv-and-jsonl">Importing CSV and JSONL</h2>
@@ -608,7 +587,7 @@ Agentics enable us to think about AI workflows in terms of structured data trans
 <span class="nb">print</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">atype</span><span class="p">)</span>
 
 <span class="c1">#note that states contains only the attribites in atype, others have been filtered out</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">states</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">())</span>
 <span class="n">AG</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/orders_filtered.jsonl&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="rebind">Rebind</h2>
@@ -618,7 +597,7 @@ Agentics enable us to think about AI workflows in terms of structured data trans
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MovieReview</span><span class="p">(</span><span class="n">Movie</span><span class="p">):</span>
     <span class="n">review</span><span class="p">:</span><span class="nb">str</span>
-    <span class="n">quality_score</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;The quality of the movies in a scale 0 to 10&quot;</span><span class="p">)</span>
+    <span class="n">quality_score</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;The quality of the movies in a scale 0 to 10&quot;</span><span class="p">)</span>
 
 <span class="n">movies</span><span class="o">.</span><span class="n">rebind_atype</span><span class="p">(</span><span class="n">MovieReview</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">movies</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -627,12 +606,12 @@ Agentics enable us to think about AI workflows in terms of structured data trans
 <div class="highlight"><pre><span></span><code><span class="n">movies</span> <span class="o">=</span> <span class="n">AG</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s2">&quot;data/orders.csv&quot;</span><span class="p">)</span>
 <span class="n">movies</span><span class="o">.</span><span class="n">add_attribute</span><span class="p">(</span><span class="s2">&quot;review&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span>
 <span class="n">movies</span><span class="o">.</span><span class="n">add_attribute</span><span class="p">(</span><span class="s2">&quot;quality_score&quot;</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;The quality of the movies in a scale 0 to 10&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">movies</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">movies</span><span class="o">.</span><span class="n">subset_atype</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="s2">&quot;genre&quot;</span><span class="p">,</span><span class="s2">&quot;description&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">movies</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">## note that movies[0] is equivalent to </span>
 </code></pre></div>
 <h2 id="reference-code">Reference code</h2>
-<p><a href="src/agentics/examples/agentics_basics.py">explore this example</a></p>
+<p><a href="https://github.com/IBM/Agentics/blob/main/tutorials/agentics_basics.ipynb">explore this example</a></p>
 <h2 id="see-next-transduction">See Next: Transduction</h2>
 <p>Wrapping pydantic types into Agentics provides them with the ability to perform transduction, as described in the <a href="../transduction/">next section</a></p>
 

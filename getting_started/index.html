@@ -314,9 +314,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ollama-local" class="md-nav__link">
+  <a href="#ollama-local-may-require-gpu" class="md-nav__link">
     <span class="md-ellipsis">
-      Ollama (local)
+      Ollama (local, may require GPU)
     </span>
   </a>
   
@@ -332,9 +332,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vllm" class="md-nav__link">
+  <a href="#google-gemini-offer-free-api-key" class="md-nav__link">
     <span class="md-ellipsis">
-      VLLM:
+      Google Gemini (offer free API key)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm-need-dedicated-gpu-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      VLLM (Need dedicated GPU server):
     </span>
   </a>
   
@@ -354,6 +363,15 @@
   <a href="#test-installation" class="md-nav__link">
     <span class="md-ellipsis">
       Test Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-mcp-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using MCP servers
     </span>
   </a>
   
@@ -515,28 +533,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../memory.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Memory
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -602,9 +598,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ollama-local" class="md-nav__link">
+  <a href="#ollama-local-may-require-gpu" class="md-nav__link">
     <span class="md-ellipsis">
-      Ollama (local)
+      Ollama (local, may require GPU)
     </span>
   </a>
   
@@ -620,9 +616,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vllm" class="md-nav__link">
+  <a href="#google-gemini-offer-free-api-key" class="md-nav__link">
     <span class="md-ellipsis">
-      VLLM:
+      Google Gemini (offer free API key)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm-need-dedicated-gpu-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      VLLM (Need dedicated GPU server):
     </span>
   </a>
   
@@ -642,6 +647,15 @@
   <a href="#test-installation" class="md-nav__link">
     <span class="md-ellipsis">
       Test Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-mcp-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using MCP servers
     </span>
   </a>
   
@@ -736,15 +750,31 @@
 <ul>
 <li>Install uv (skip if available) </li>
 </ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux and OSX</label><label for="__tabbed_1_2">OSX with <code>brew</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
 </code></pre></div>
-<p>Other installation options <a href="curl -LsSf https://astral.sh/uv/install.sh | sh">here</a></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>uv
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Other installation options <a href="https://docs.astral.sh/uv/getting-started/installation/">here</a></p>
 <ul>
 <li>Install the dependencies</li>
 </ul>
 <div class="highlight"><pre><span></span><code>uv<span class="w"> </span>sync
-<span class="c1"># Source the environment (optional, you can skip this and prepend uv run to the later lines)</span>
-<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w"> </span><span class="c1"># bash/zsh 🐚</span>
+</code></pre></div>
+<ul>
+<li>Activate the environment</li>
+</ul>
+<blockquote>
+<p>If you use <code>uv run python</code> you don't need to follow this step</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w"> </span><span class="c1"># bash/zsh 🐚 👨‍💻</span>
 <span class="nb">source</span><span class="w"> </span>.venv/bin/activate.fish<span class="w"> </span><span class="c1"># fish 🐟</span>
 </code></pre></div>
 <h3 id="set-environment-variables">🎯 Set Environment Variables</h3>
@@ -756,13 +786,13 @@
 <li><code>OPENAI_API_KEY</code> - Your OpenAI APIKey</li>
 <li><code>OPENAI_MODEL_ID</code> - Your favorute model, default to <strong>openai/gpt-4</strong></li>
 </ul>
-<h4 id="ollama-local">Ollama (local)</h4>
+<h4 id="ollama-local-may-require-gpu">Ollama (local, may require GPU)</h4>
 <ul>
 <li>Download and install <a href="https://ollama.com/">Ollama</a></li>
 <li>Download a Model. You should use a model that support reasoning and fit your GPU. So smaller are preferred. 
 <div class="highlight"><pre><span></span><code>ollama pull ollama/deepseek-r1:latest
 </code></pre></div></li>
-<li>"OLLAMA_MODEL_ID" - ollama/gpt-oss:latest (better quality), ollama/deepseek-r1:latest (smaller)</li>
+<li><code>OLLAMA_MODEL_ID</code> - ollama/gpt-oss:latest (better quality), ollama/deepseek-r1:latest (smaller)</li>
 </ul>
 <h4 id="ibm-watsonx">IBM WatsonX:</h4>
 <ul>
@@ -773,11 +803,16 @@
 <p><code>MODEL</code>  - watsonx/meta-llama/llama-3-3-70b-instruct (or alternative supporting function call)</p>
 </li>
 </ul>
-<p>Configuration folder for memory:</p>
+<h4 id="google-gemini-offer-free-api-key">Google Gemini (offer free API key)</h4>
 <ul>
-<li><code>AGENT_PERSISTANCE_PATH</code> - Path to a folder in the local file system where memory will be stored (will create a new empty folder on first use)</li>
+<li>
+<p><code>WATSONX_APIKEY</code> - WatsonX API key</p>
+</li>
+<li>
+<p><code>MODEL</code>  - watsonx/meta-llama/llama-3-3-70b-instruct (or alternative supporting function call)</p>
+</li>
 </ul>
-<h4 id="vllm">VLLM:</h4>
+<h4 id="vllm-need-dedicated-gpu-server">VLLM (Need dedicated GPU server):</h4>
 <ul>
 <li>Set up your local instance of VLLM</li>
 <li><code>VLLM_URL</code> - <a href="http://base_url:PORT/v1">http://base_url:PORT/v1</a></li>
@@ -785,7 +820,7 @@
 </ul>
 <h2 id="test-installation">Test Installation</h2>
 <p>test hello world example (need to set up llm credentials first)</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>src/agentics/examples/hello_world.py
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>examples/hello_world.py
 </code></pre></div>
 <p>this will return something like </p>
 <div class="highlight"><pre><span></span><code>answer: Rome
@@ -805,6 +840,18 @@ justification: The input text contains a question that may be related to violent
   it&#39;s more appropriate to return null for the answer.
 confidence: 1.0
 </code></pre></div>
+<h2 id="using-mcp-servers">Using MCP servers</h2>
+<p>Point to your local MCP server code by setting 
+- MCP_SERVER_PATH = YOUR_MCP_SERVER.py </p>
+<p>The file <a href="src/agentics/tools/DDG_search_tool_mcp.py">src/agentics/tools/DDG_search_tool_mcp.py</a> provides an example implementation of an MCP server offering Duck Duck Go Search as a tool.</p>
+<p>To try it out, first start the MCP server
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/agentics/tools/DDG_search_tool_mcp.py<span class="w">  </span><span class="c1">## point to your local file system path if doesn&#39;t work</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MCP_SERVER_PATH</span><span class="o">=</span>src/agentics/tools/DDG_search_tool_mcp.py<span class="w"> </span><span class="c1">## point to your local file system path if doesn&#39;t work</span>
+</code></pre></div>
+On a different shell, test the MCP server in agentics
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>Agentics/examples/agentics_web_search_report.py<span class="w"> </span><span class="c1">## point to your local file system path if doesn&#39;t work</span>
+</code></pre></div></p>
+<p>Ask your question and it will be answered by looking up in the web. </p>
 <h2 id="coding-in-agentics">🎯 Coding in Agentics</h2>
 <p>The hello_world.py code below illustrates how to use Agentics to transduce a list of natural language prompts into structured answers, using <code>pydantic</code> for defining the output schema.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
@@ -837,25 +884,28 @@ confidence: 1.0
 </code></pre></div>
 <h2 id="documentation">Documentation</h2>
 <p>This documentation page is written using Mkdocs. 
-You can start the server to visualize this interactively.
-<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
+You can start the server to visualize this interactively.</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>--group<span class="w"> </span>docs<span class="w"> </span>mkdocs<span class="w"> </span>serve
 </code></pre></div>
-After started, documentation will be available here <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></p>
+<p>After started, documentation will be available here <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></p>
 <h3 id="installation-details">Installation details</h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Poetry</label><label for="__tabbed_1_2">Python</label><label for="__tabbed_1_3">uv</label><label for="__tabbed_1_4">uvx 🏃🏽</label><label for="__tabbed_1_5">Conda</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Poetry</label><label for="__tabbed_2_2">Python</label><label for="__tabbed_2_3">uvx 🏃🏽</label><label for="__tabbed_2_4">Conda</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Install poetry (skip if available)</p>
+<blockquote>
+<p>You will have to install Python 3.12+ </p>
+</blockquote>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sSL<span class="w"> </span>https://install.python-poetry.org<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-
 </code></pre></div>
-<p>Clone and install agentics</p>
-<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>install
+<p>Clone and install </p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>add<span class="w"> </span>agentics
 <span class="nb">source</span><span class="w"> </span><span class="k">$(</span>poetry<span class="w"> </span>env<span class="w"> </span>info<span class="w"> </span>--path<span class="k">)</span>/bin/activate<span class="w"> </span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <blockquote>
-<p>Ensure you have Python 3.11+ 🚨.</p>
+<p>Ensure you have Python 3.12+ 🚨.</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
 </code></pre></div>
 </blockquote>
@@ -883,17 +933,6 @@ package may be required to be installed with the Operating System package manage
 </ul>
 </div>
 <div class="tabbed-block">
-<ul>
-<li>Ensure <code>uv</code> is installed.
-<div class="highlight"><pre><span></span><code><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>uv<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w">  </span>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
-<span class="c1"># It&#39;s recommended to restart the shell afterwards</span>
-<span class="nb">exec</span><span class="w"> </span><span class="nv">$SHELL</span>
-</code></pre></div></li>
-<li><code>uv venv --python 3.11</code></li>
-<li><code>uv pip install ./agentics</code> or <code>uv add ./agentics</code> (recommended)</li>
-</ul>
-</div>
-<div class="tabbed-block">
 <blockquote>
 <p>This is a way to run agentics temporarily or quick tests</p>
 </blockquote>
@@ -910,7 +949,7 @@ package may be required to be installed with the Operating System package manage
 <ol>
 <li>
 <p>Create a conda environment:
-   <div class="highlight"><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>agentics<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+   <div class="highlight"><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>agentics<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
 </code></pre></div>
    In this example the name of the environment is <code>agetnics</code> but you can change
    it to your personal preference.</p>
