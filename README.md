@@ -50,18 +50,19 @@ We welcome new AG entusiasts to extend this framework with new applications and 
 
 ## Tutorial 
 
+[Agentics Basics](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/agentics_basics.ipynb) Learn how to create AGs
 
-[Agentics Basics](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/agentics_basics.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/agentics_basics.ipynb)
+[Amap Reduce](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/amap_reduce.ipynb) Learn how to use asynchhronous map and reduce
 
-[Amap Reduce](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/amap_reduce.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/amap_reduce.ipynb)
+[Transduction](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/transduction.ipynb) Learn how to use logical transduction
 
-[ATypes](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/atypes.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/atypes.ipynb)
+[ATypes](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/atypes.ipynb) 
 
-[LLMs](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/llms.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/llms.ipynb)
+[MCP Tools](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/mcp_tools.ipynb)
 
-[MCP Tools](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/mcp_tools.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/mcp_tools.ipynb)
-
-[Transduction](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/transduction.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/transduction.ipynb)
+To access or modify the google colab notebooks
+  - fork Agentics to your github account
+  - modify the above links to colab.research.google.com/github/<YOUR_GITHUB_ID>/Agentics/blob/main/tutorials/<NOTEBOOK_NAME>.ipynb
 
 
 ## 🚀 Documentation
