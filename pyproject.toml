@@ -30,7 +30,6 @@ dependencies = [
     "datasets (>=4.0.0,<5.0.0)",
     "mcp (>=1.13.1,<2.0.0)",
     "google (>=3.0.0,<4.0.0)",
-    "ipywidgets>=8.1.7",
 ]
 
 [tool.uv]
@@ -57,7 +56,8 @@ dev = [
   "pytest-asyncio >=1.0.0,<2",
   "pytest-html >=4.1.1,<5",
   "invoke>=2.2.0",
-  "papermill>=2.6.0",
+  "papermill>=2.6.0", 
+  {include-group = "docs"},
 ]
 docling = [
   "langchain-docling >=0.2.0,<0.3.0"
@@ -67,7 +67,11 @@ docs = [
     "mkdocs-material>=9.6.18",
     "mkdocstrings>=0.30.0",
 ]
-
+colab = ["ipywidgets>=8.1.7",]
+all = [
+  {include-group = "docling"},
+  {include-group = "colab"}
+]
 
 [tool.isort]
 profile = "black"
