@@ -56,6 +56,7 @@ dev = [
   "pytest-asyncio >=1.0.0,<2",
   "pytest-html >=4.1.1,<5",
   "invoke>=2.2.0",
+  "papermill>=2.6.0",
 ]
 docling = [
   "langchain-docling >=0.2.0,<0.3.0"
