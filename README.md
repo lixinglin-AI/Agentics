@@ -1,8 +1,8 @@
 <h1 align="center">Agentics</h1>
 <h2 align="center">Transduction is all you need</h1>
 <p align="center">
-    <img src="image.png" height="128">
-    <img src="image.png" height="128">
+    <img src="https://raw.githubusercontent.com/IBM/Agentics/refs/heads/main/image.png" height="128">
+    <img src="https://raw.githubusercontent.com/IBM/Agentics/refs/heads/main/image.png" height="128">
 </p>
 
 
@@ -35,9 +35,9 @@ We welcome new AG entusiasts to extend this framework with new applications and 
 
 **Typed Agentic Computation**: Define workflows over structured types using standard Pydantic schemas.
 
-**Logical Transduction (<<)**: Transform data between types using LLMs with few-shot examples, tools, and memory.
+**Logical Transduction (`<<`)**: Transform data between types using LLMs with few-shot examples, tools, and memory.
 
-**Async Mapping and Reduction**: Apply async mapping (amap) and aggregation (areduce) functions over datasets.
+**Async Mapping and Reduction**: Apply async mapping (`amap`) and aggregation (`areduce`) functions over datasets.
 
 **Batch Execution & Retry**: Automatically handles batch-based asynchronous execution with graceful fallback.
 
@@ -50,19 +50,15 @@ We welcome new AG entusiasts to extend this framework with new applications and 
 
 ## Tutorial 
 
+| Notebook |   Description |
+|----------| --------------- |
+| [LLMs](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/llms.ipynb) | Basics |
+| [Agentic Basics](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/agentics_basics.ipynb)         | Step by step guide illustrating how to make a new AG, access and print its content, import and export it to files            | 
+|[Transduction](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/transduction.ipynb) | Demonstrate the use of logical transduction  (`<<`) in Agentics |
+| [Amap Reduce](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/amap_reduce.ipynb) | Try out MapReduce in Agentics to scale out |
+| [MCP Tools](./tutorials/mcp_tools.ipynb) | |
 
-[Agentics Basics](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/agentics_basics.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/agentics_basics.ipynb)
-
-[Amap Reduce](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/amap_reduce.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/amap_reduce.ipynb)
-
-[ATypes](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/atypes.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/atypes.ipynb)
-
-[LLMs](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/llms.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/llms.ipynb)
-
-[MCP Tools](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/mcp_tools.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/mcp_tools.ipynb)
-
-[Transduction](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/transduction.ipynb) [source code](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/transduction.ipynb)
-
+<!-- | [ATypes](https://colab.research.google.com/github/IBM/Agentics/blob/main/tutorials/atypes.ipynb) | | -->
 
 ## 🚀 Documentation
 
@@ -71,8 +67,6 @@ We welcome new AG entusiasts to extend this framework with new applications and 
 🧠 [Agentics](docs/agentics.md): Explore how Agentics wraps `pydantic` models into transduction-ready agents. 
 
 🔁 [Transduction](docs/transduction.md): Discover how the `<<` operator implements logical transduction between types and how to control its behavior.
-
-🧬 [Memory](docs/memory.md): Leverage external knowledge from documents to enhance transduction.
 
 🛠️ [Tools](docs/tools.md): Learn how to integrate external tools (e.g., LangChain, CrewAI) to provide access to external data necessary for logical transduction.
 
@@ -102,56 +96,55 @@ for result in qa_agent.states:
 
 ```
 
-🧠 Conceptual Overview
+### 🧠 Conceptual Overview
 
 Agentics models workflows as transformations between typed states. Each instance of Agentics includes:
 
-atype: A Pydantic model representing the schema.
+`atype`: A Pydantic model representing the schema.
 
-states: A list of objects of that type.
+`states`: A list of objects of that type.
 
-Optional llm, tools, prompt_template, memory, and batch_size.
+Optional `llm`, `tools`, `prompt_template`, `memory`, and `batch_size`.
 
-Operations:
+#### Operations:
 
-amap(func): Applies an async function over each state.
+`amap`(func): Applies an async function over each state.
 
-areduce(func): Reduces a list of states into a single value.
+`areduce`(func): Reduces a list of states into a single value.
 
-<<: Performs logical transduction from source to target Agentics.
+`<<`: Performs logical transduction from source to target Agentics.
 
-🔧 Advanced Usage
+#### 🔧 Advanced Usage
 
-Customizing Prompts
+##### Customizing Prompts
 
 agent.prompt_template = """
 You are an assistant that extracts key information.
 Please respond using the format {answer}, {justification}, {confidence}.
 """
 
-📚 Documentation
+# 📚 Documentation
 
 Full documentation and examples are available at:  
 
-🧪 Tests
+# 🧪 Tests
 
 Run all tests using:
 
-pytest tests/
+`uv run pytest`
 
-🛠️ Requirements
 
-Python 3.11+
+# Examples
 
-pydantic >= 2.0
+Run all scripts in example folder using uv
 
-langchain, crewai 
+`uv run python examples/hello_world.py`
 
-📄 License
+## $ 📄 License
 
 Apache 2.0
 
-👥 Authors
+## 👥 Authors
 
 Developed by Alfio Gliozzo and contributors. 
 
