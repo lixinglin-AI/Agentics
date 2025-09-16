@@ -4,6 +4,9 @@ import papermill as pm
 import pytest
 
 
+@pytest.mark.skip(
+    reason="Some tutorials require user interaction which can't be provided in GA"
+)
 @pytest.mark.parametrize(
     "notebook",
     (
