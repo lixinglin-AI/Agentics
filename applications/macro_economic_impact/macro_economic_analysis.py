@@ -1,3 +1,4 @@
+
 import streamlit as st
 from dotenv import load_dotenv
 
@@ -10,7 +11,13 @@ from pydantic import Field
 
 from agentics import AG
 from agentics.core.atype import pydantic_to_markdown
+from dotenv import load_dotenv
+load_dotenv()
 
+# === Force select Gemini as the LLM provider ===
+import os
+os.environ["AGENTICS_LLM_PROVIDER"] = "gemini"
+SELECTED_LLM = "gemini"
 
 def macro_economic_analysis_ui():
 
