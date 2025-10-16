@@ -89,3 +89,14 @@ def macro_economic_analysis_ui():
                 col2.text(
                     yaml.dump(state.model_dump(), sort_keys=False, allow_unicode=True)
                 )
+
+if __name__ == "__main__":
+    import streamlit as st
+    st.set_page_config(page_title="Macro Economic Impact", layout="wide")
+
+    if "selected_model" not in st.session_state:
+        st.session_state.selected_model = "ExampleModel"
+    if "pydantic_class" not in st.session_state:
+        st.session_state.pydantic_class = None
+
+    macro_economic_analysis_ui()
