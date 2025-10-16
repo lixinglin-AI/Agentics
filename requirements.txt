@@ -1,0 +1,5 @@
+streamlit
+python-dotenv
+pyyaml
+pydantic
+agentics-py
