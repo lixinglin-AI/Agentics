@@ -1,25 +1,40 @@
 
 import streamlit as st
 from dotenv import load_dotenv
-
 load_dotenv()
+
 import asyncio
 import datetime
 from pathlib import Path
 
 from pydantic import Field
-
+from pydantic import BaseModel
 from agentics import AG
 from agentics.core.atype import pydantic_to_markdown
-from dotenv import load_dotenv
 load_dotenv()
 
+from agentics.core.llm_connections import register_llm_provider
+import google.generativeai as genai
 # === Force select Gemini as the LLM provider ===
 import os
-os.environ["AGENTICS_LLM_PROVIDER"] = "gemini"
+GEMINI_API_KEY= "AIzaSyDPDVnOHQAHqYrUVuYlyE0pRtffILJ1Dwo"
 SELECTED_LLM = "gemini"
+GEMINI_MODEL_ID= "gemini/gemini-2.0-flash"
 
 def macro_economic_analysis_ui():
+    class MarketNewsImpact(BaseModel):
+        date: str
+        news_headline: str
+        news_summary: str | None = None
+        predicted_positive_industries: list[str] | None = None
+        predicted_negative_industries: list[str] | None = None
+        reasoning: str | None = None
+
+    if "pydantic_class" not in st.session_state or st.session_state.pydantic_class is None:
+        st.session_state.pydantic_class = MarketNewsImpact
+
+    if "selected_model" not in st.session_state:
+        st.session_state.selected_model = "gemini"
 
     if "market_dataset" not in st.session_state:
         st.session_state.market_dataset = AG.from_csv(
