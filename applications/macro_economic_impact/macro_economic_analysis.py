@@ -13,7 +13,6 @@ from agentics import AG
 from agentics.core.atype import pydantic_to_markdown
 load_dotenv()
 
-from agentics.core.llm_connections import register_llm_provider
 import google.generativeai as genai
 # === Force select Gemini as the LLM provider ===
 import os
